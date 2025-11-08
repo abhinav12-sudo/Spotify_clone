@@ -18,21 +18,20 @@ async function getsongs(){
 async function main(){
     //get the list of all songs
     let songs= await getsongs()
-    console.log(songs)
+    // show all the songs in the playlists
     let songul=document.querySelector(".songlist").getElementsByTagName("ul")[0]
     for(const song of songs){
-        songul.innerHTML = songul.innerHTML + `<li>${song.replaceAll("%20"," ")}</li>`;
+        songul.innerHTML = songul.innerHTML + `<li><img src="music.svg" alt="" class="invert">
+                                <div class="info">
+                                    <div>${song.replaceAll("%20"," ")}</div>
+                                    <div>Abhinav</div>
+                                </div>
+                                <div class="playnow">
+                                    <span>Play Now</span>
+                                    <img src="play.svg" alt="" class="invert">
+
+                                </div>
+                            </li>`;
     }
-
-    //Play the first song
-    var audio = new Audio(songs[0]);
-    audio.play();
-    audio.addEventListener("loadeddata",()=>{
-        let duration = audio.duration;
-        console.log(audio.duration , audio.currentSrc , audio.currentTime)
-    })
-
-
-
 }
 main()
