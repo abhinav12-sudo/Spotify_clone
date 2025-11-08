@@ -141,12 +141,36 @@ body{
 .playbar{
     position: absolute;
     bottom: 0;
-    background-color: rgb(139,193,139);
-    width: 100%;
+    background-color: rgb(227, 238, 227);
+    width: 90%;
     padding: 12px;
 }
 .songbuttons{
     display: flex;
     justify-content: center;
     gap: 16px;
+}
+.songlist ul{
+    padding: 0 42px;
+}
+.songlist ul li{
+    list-style-type: decimal;
+    display: flex;
+    gap: 34px;
+    cursor: pointer;
+    padding:12px 0px ;
+    border: 1px solid white;
+    margin: 12px;
+    padding: 13px;
+    border-radius: 5px;
+}
+.playnow{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.playnow span{
+    width: 64px;
+    font-size: 15px;
+    padding: 12px;
 }
