@@ -251,7 +251,11 @@ body{
     justify-content: center;
     align-items: center;
     gap: 12px;
+    cursor: pointer;
 
+}
+.range input{
+    cursor: pointer;
 }
 .songinfo{
     color: black;
@@ -266,6 +270,7 @@ body{
 }
 .hamburger{
     display: none;
+    cursor: pointer;
 }
 .hamburgercontainer{
     display: flex;
@@ -277,7 +282,7 @@ body{
     .left{
         background-color: black;
         position: absolute;
-        left: -120%;
+        left: -130%;
         transition: all .3s;
         z-index: 1;
         width: 373px;
@@ -305,7 +310,7 @@ body{
         display: block;
     }
     .card{
-        width: 44vw;
+        width: 55vw;
     }
     .cardcontainer{
         margin: 0;
@@ -329,10 +334,29 @@ body{
         flex-direction: column;
         gap: 13px;
     }
-}
-@media (max-width:400px){
-    .card{
-        width: 80vw;
+    .cardcontainer{
+        max-height: unset;
+        overflow-y: unset;
+        margin-bottom: 35vh;
+
+    }
+    .playbar{
+        right: 25px;
     }
 
+}
+@media (max-width:500px){
+    .card{
+        width: 100%;
+    }
+    .header>*{
+        padding: 2px;
+    }
+    .buttons>*{
+        margin: 0 6px;
+    }
+    .spotifyplaylist h1{
+        padding: 4px;
+    }
+    
 }
