@@ -126,6 +126,7 @@ async function main(){
             play.src = "images/play.svg"
         }
     })
+    console.log(currentsong.duration);
     // listen for timeupdate event
     currentsong.addEventListener("timeupdate",()=>{
         document.querySelector(".songtime").innerHTML=`${
@@ -187,6 +188,16 @@ async function main(){
             document.querySelector(".range").getElementsByTagName("input")[0].value = 10;
         }
     })
-
+    currentsong.addEventListener("ended", () => {
+        let currentTrack = decodeURIComponent(currentsong.src.split("/").slice(-1)[0]).replace(/^\//, "");
+        let index = songs.map(s => decodeURIComponent(s).replace(/^\//, "")).indexOf(currentTrack);
+        if ((index + 1) < songs.length) {
+            playmusic(songs[index + 1]);
+        }
+    });
+    
+    
 }
+
 main()
+
