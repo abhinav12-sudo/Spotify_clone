@@ -1,7 +1,13 @@
+// If an HTML element has an id, the browser automatically creates a global variable with the same name.
+
 let currentsong = new Audio();
 let songs;
 let currfolder;
 let cardcontainer = document.querySelector(".cardcontainer")
+let play = document.getElementById("play");
+// let pausebutton = document.getElementById("play")
+
+
 function secondsToMinutesSeconds(seconds) {
     if (isNaN(seconds) || seconds < 0) {
         return "00:00";
@@ -195,6 +201,19 @@ async function main(){
             playmusic(songs[index + 1]);
         }
     });
+    window.addEventListener("keydown",(e)=>{
+        if(e.keyCode == 32){
+            if(currentsong.paused){
+            currentsong.play()
+            play.src = "images/pause.svg"
+        }
+        else{
+            currentsong.pause()
+            play.src = "images/play.svg"
+        }
+        }
+    })
+    
     
     
 }
