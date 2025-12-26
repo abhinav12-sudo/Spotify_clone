@@ -5,7 +5,16 @@ let songs;
 let currfolder;
 let cardcontainer = document.querySelector(".cardcontainer")
 let play = document.getElementById("play");
+let previous = document.getElementById("previous")
+let next = document.getElementById("next")
 // let pausebutton = document.getElementById("play")
+
+function getCurrentSongIndex() {
+    let current = decodeURIComponent(currentsong.src.split("/").pop()).replace(/^\//, "");
+    return songs.findIndex(
+        s => decodeURIComponent(s).replace(/^\//, "") === current
+    );
+}
 
 
 function secondsToMinutesSeconds(seconds) {
@@ -157,17 +166,17 @@ async function main(){
     })
     // Add an event listener to previous 
     previous.addEventListener("click",()=>{
-        let index = songs.indexOf(currentsong.src.split("/").slice(-1)[0])
-        if((index-1)>=0){
+        let index = getCurrentSongIndex();
+        if(index>0){
             playmusic(songs[index-1])
 
         }
     })
     // Add an event listener to next
     next.addEventListener("click",()=>{
-        currentsong.pause()
-        let index = songs.indexOf(currentsong.src.split("/").slice(-1)[0])
-        if((index+1)< songs.length){
+        // currentsong.pause()
+        let index = getCurrentSongIndex()
+        if(index< songs.length-1){
             playmusic(songs[index+1])
 
         }
@@ -202,17 +211,31 @@ async function main(){
         }
     });
     window.addEventListener("keydown",(e)=>{
+        // console.log(e);
         if(e.keyCode == 32){
             if(currentsong.paused){
             currentsong.play()
             play.src = "images/pause.svg"
-        }
-        else{
+            }
+            else{
             currentsong.pause()
             play.src = "images/play.svg"
+            }
         }
+        
+        if(e.keyCode == 37){
+            let index = getCurrentSongIndex();
+            if(index>0){
+            playmusic(songs[index-1])
+            }
         }
-    })
+        if(e.keyCode == 39){
+            let index = getCurrentSongIndex()
+            if(index< songs.length-1){
+            playmusic(songs[index+1])
+            }
+        }
+})
     
     
     
