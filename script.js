@@ -15,8 +15,6 @@ function getCurrentSongIndex() {
         s => decodeURIComponent(s).replace(/^\//, "") === current
     );
 }
-
-
 function secondsToMinutesSeconds(seconds) {
     if (isNaN(seconds) || seconds < 0) {
         return "00:00";
